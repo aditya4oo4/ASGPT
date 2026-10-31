@@ -1,0 +1,309 @@
+
+.chatwindow {
+    position: relative;
+    flex: 1;
+    min-width: 0;
+    min-height: 0;
+    height: 100%;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: space-between;
+    overflow: hidden;
+    background: var(--bg-main);
+    color: var(--text-primary);
+}
+
+/* Navbar */
+.navbar {
+    width: 100%;
+    min-height: 64px;
+    flex-shrink: 0;
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    padding: 0 22px;
+    border-bottom: 1px solid rgba(255, 255, 255, 0.035);
+    background: var(--bg-main);
+    position: relative;
+    z-index: 10;
+}
+
+.navbar > span {
+    margin: 0;
+    color: var(--text-primary);
+    font-size: 15px;
+    font-weight: 600;
+    letter-spacing: -0.3px;
+}
+
+.userIconDiv {
+    margin: 0;
+    cursor: pointer;
+}
+
+.userIcon {
+    width: 34px;
+    height: 34px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    border: 1px solid #414141;
+    border-radius: 50%;
+    background: #303030;
+    color: #e7e7e7;
+    cursor: pointer;
+    transition: background 150ms ease;
+}
+
+.userIcon:hover {
+    background: #414141;
+}
+
+/* Input Area */
+.chatInput {
+    position: relative;
+    z-index: 5;
+    width: 100%;
+    flex-shrink: 0;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    padding: 12px 24px 14px;
+    background: linear-gradient(to top, var(--bg-main) 80%, transparent);
+}
+
+.inputBox {
+    position: relative;
+    width: 100%;
+    max-width: 760px;
+    min-height: 56px;
+    display: flex;
+    align-items: center;
+    border: 1px solid #414141;
+    border-radius: 17px;
+    background: #2a2a2a;
+    transition: border-color 180ms ease, background 180ms ease;
+}
+
+.inputBox:focus-within {
+    border-color: #5b5b5b;
+    background: #2c2c2c;
+}
+
+.inputBox input {
+    width: 100%;
+    min-width: 0;
+    min-height: 54px;
+    padding: 15px 55px 15px 19px;
+    border: none;
+    outline: none;
+    border-radius: inherit;
+    background: transparent;
+    color: var(--text-primary);
+    font-size: 14px;
+    line-height: 1.6;
+}
+
+.inputBox input::placeholder {
+    color: #888;
+}
+
+#submit {
+    position: absolute;
+    right: 9px;
+    width: 36px;
+    height: 36px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    border-radius: 10px;
+    color: #e7e7e7;
+    font-size: 17px;
+    cursor: pointer;
+    transition: background 150ms ease, color 150ms ease;
+}
+
+#submit:hover {
+    background: #414141;
+    color: #fff;
+}
+
+.info {
+    max-width: 100%;
+    margin: 9px 0 0;
+    padding: 0 8px;
+    color: #818181;
+    text-align: center;
+    font-size: 11px;
+    line-height: 1.5;
+    overflow-wrap: anywhere;
+}
+
+/* Loading Indicator */
+.loaderContainer {
+    position: absolute;
+    bottom: 120px;
+    left: 50%;
+    z-index: 4;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    transform: translateX(-50%);
+    pointer-events: none;
+}
+
+/* Profile Dropdown */
+.dropDown {
+    position: absolute;
+    top: 54px;
+    right: 22px;
+    z-index: 1002;
+    width: 190px;
+    max-width: calc(100vw - 24px);
+    padding: 6px;
+    background: #252525;
+    border: 1px solid #3a3a3a;
+    border-radius: 13px;
+    box-shadow: 0 8px 24px rgba(0, 0, 0, 0.22);
+    animation: dropdownEnter 160ms ease-out;
+    transform-origin: top right;
+}
+
+.dropDownItem {
+    display: flex;
+    align-items: center;
+    gap: 10px;
+    width: 100%;
+    margin: 2px 0;
+    padding: 10px 12px;
+    border-radius: 8px;
+    border: none;
+    background: transparent;
+    color: #d4d4d4;
+    font-size: 13px;
+    font-weight: 400;
+    line-height: 1.5;
+    text-align: left;
+    cursor: pointer;
+    transition: background-color 150ms ease, color 150ms ease;
+}
+
+.dropDownItem:hover {
+    background: #333333;
+    color: #ffffff;
+}
+
+.dropDownItem:focus-visible {
+    outline: 2px solid #777777;
+    outline-offset: -2px;
+    background: #303030;
+}
+
+.dropDownDivider {
+    height: 1px;
+    margin: 5px 7px;
+    background: #3a3a3a;
+}
+
+.dropDownItem.danger {
+    color: #e58b8b;
+}
+
+.dropDownItem.danger:hover {
+    background: rgba(220, 70, 70, 0.10);
+    color: #ff9b9b;
+}
+
+@keyframes dropdownEnter {
+    from {
+        opacity: 0;
+        transform: translateY(-4px) scale(0.98);
+    }
+
+    to {
+        opacity: 1;
+        transform: translateY(0) scale(1);
+    }
+}
+
+/* Tablets */
+@media (max-width: 1024px) {
+    .chatInput {
+        padding-left: 18px;
+        padding-right: 18px;
+    }
+
+    .inputBox {
+        max-width: 680px;
+    }
+}
+
+/* Mobile */
+@media (max-width: 767px) {
+    .navbar {
+        min-height: 56px;
+        padding: 0 14px;
+    }
+
+    /* Space for the sidebar hamburger button */
+    .navbar > span {
+        margin-left: 46px;
+    }
+
+    .chatInput {
+        padding: 10px 12px max(12px, env(safe-area-inset-bottom));
+    }
+
+    .inputBox {
+        min-height: 52px;
+        border-radius: 14px;
+    }
+
+    .inputBox input {
+        min-height: 50px;
+        padding: 13px 50px 13px 14px;
+        font-size: 14px;
+    }
+
+    .info {
+        font-size: 10px;
+        margin-top: 7px;
+    }
+
+    .loaderContainer {
+        bottom: 105px;
+    }
+
+    .dropDown {
+        top: 50px;
+        right: 12px;
+    }
+}
+
+
+@media (max-width: 380px) {
+    .chatInput {
+        padding-left: 9px;
+        padding-right: 9px;
+    }
+
+    .info {
+        font-size: 9px;
+    }
+
+    .navbar {
+        padding-right: 10px;
+    }
+}
+
+
+@media (prefers-reduced-motion: reduce) {
+    .dropDown,
+    .dropDownItem,
+    .userIcon {
+        animation: none;
+        transition: none;
+    }
+}

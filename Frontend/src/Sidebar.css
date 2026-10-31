@@ -1,0 +1,247 @@
+
+.sidebar {
+    width: 260px;
+    min-width: 260px;
+    height: 100%;
+    display: flex;
+    flex-direction: column;
+    background: var(--bg-sidebar);
+    color: var(--text-primary);
+    border-right: 1px solid rgba(255, 255, 255, 0.035);
+    overflow: hidden;
+    flex-shrink: 0;
+    z-index: 1001;
+}
+
+/* New Chat */
+.sidebar > button {
+    width: calc(100% - 20px);
+    min-height: 54px;
+    flex-shrink: 0;
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    margin: 10px;
+    padding: 9px 11px;
+    border: 1px solid transparent;
+    border-radius: 12px;
+    background: transparent;
+    color: var(--text-secondary);
+    cursor: pointer;
+    transition: background 160ms ease, color 160ms ease;
+}
+
+.sidebar > button:hover {
+    background: #242424;
+    color: var(--text-primary);
+}
+
+.newpen {
+    font-weight: 400;
+    color: var(--text-secondary);
+}
+
+.logo {
+    display: block;
+    width: 36px;
+    height: 36px;
+    object-fit: cover;
+    border-radius: 50%;
+}
+
+.sidebar > button span {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    width: 36px;
+    height: 36px;
+    border: 1px solid #383838;
+    border-radius: 10px;
+    color: #c5c5c5;
+    font-size: 16px;
+    transition: background 0.2s ease, color 0.2s ease;
+}
+
+.sidebar > button:hover span {
+    background: #303030;
+    color: #ffffff;
+}
+
+/* Chat History */
+.history {
+    flex: 1;
+    min-height: 0;
+    overflow-y: auto;
+    overflow-x: hidden;
+    margin: 8px 6px;
+    padding: 0 4px;
+    list-style: none;
+    scrollbar-width: thin;
+    scrollbar-color: #424242 transparent;
+}
+
+.history::-webkit-scrollbar {
+    width: 5px;
+}
+
+.history::-webkit-scrollbar-thumb {
+    background: #424242;
+    border-radius: 10px;
+}
+
+.history li {
+    position: relative;
+    display: block;
+    padding: 10px 36px 10px 12px;
+    margin-bottom: 3px;
+    border: 1px solid transparent;
+    border-radius: 9px;
+    color: #bcbcbc;
+    font-size: 13px;
+    font-weight: 400;
+    line-height: 1.55;
+    list-style: none;
+    cursor: pointer;
+    overflow-wrap: anywhere;
+    transition: background 150ms ease, color 150ms ease;
+}
+
+.history li:hover {
+    background: #242424;
+    color: #f0f0f0;
+}
+
+.history li.highlighted,
+.highlighted {
+    background: #272727;
+    color: #f0f0f0;
+    border-radius: 10px;
+}
+
+/* Delete Icon */
+.history li .fa-trash {
+    position: absolute;
+    top: 50%;
+    right: 10px;
+    transform: translateY(-50%);
+    padding: 5px;
+    border-radius: 5px;
+    color: #999;
+    font-size: 12px;
+    opacity: 0;
+    cursor: pointer;
+    transition: opacity 150ms ease, color 150ms ease;
+}
+
+.history li:hover .fa-trash {
+    opacity: 1;
+}
+
+.history li .fa-trash:hover {
+    color: #ff7777;
+}
+
+/* Footer */
+.sign {
+    flex-shrink: 0;
+    margin: 0 10px;
+    padding: 14px 5px;
+    border-top: 1px solid var(--border-color);
+    background: var(--bg-sidebar);
+    color: var(--text-muted);
+    text-align: center;
+    font-size: 12px;
+}
+
+.sign p {
+    margin: 0;
+    color: inherit;
+    font-size: inherit;
+}
+
+/* Mobile Toggle - Hidden on Desktop */
+.mobile-sidebar-toggle {
+    display: none;
+}
+
+.sidebar-overlay {
+    display: none;
+}
+
+/* Tablet and Mobile */
+@media screen and (max-width: 767px) {
+    .sidebar {
+        position: fixed;
+        top: 0;
+        left: 0;
+        width: min(280px, 85vw);
+        min-width: 0;
+        height: 100%;
+        height: 100dvh;
+        transform: translateX(-105%);
+        transition: transform 250ms ease;
+        box-shadow: 8px 0 30px rgba(0, 0, 0, 0.25);
+    }
+
+    .sidebar.sidebar-open {
+        transform: translateX(0);
+    }
+
+    .mobile-sidebar-toggle {
+        display: flex;
+        position: fixed;
+        top: 12px;
+        left: 12px;
+        width: 40px;
+        height: 40px;
+        align-items: center;
+        justify-content: center;
+        border: 1px solid #383838;
+        border-radius: 9px;
+        background: #252525;
+        color: #eeeeee;
+        font-size: 17px;
+        cursor: pointer;
+        z-index: 1003;
+    }
+
+    .mobile-sidebar-toggle:hover {
+        background: #353535;
+    }
+
+    .sidebar-overlay {
+        display: block;
+        position: fixed;
+        inset: 0;
+        width: 100%;
+        height: 100%;
+        padding: 0;
+        border: none;
+        background: rgba(0, 0, 0, 0.55);
+        z-index: 1000;
+    }
+
+    .history li .fa-trash {
+        opacity: 1;
+        padding: 8px;
+    }
+}
+
+/* Small Mobile */
+@media screen and (max-width: 360px) {
+    .sidebar {
+        width: 85vw;
+    }
+}
+
+@media (max-width: 767px) {
+    .mobile-sidebar-toggle {
+        top: 12px;
+        left: 12px;
+        z-index: 1003;
+    }
+
+    .sidebar > button {
+        margin-top: 64px;
+    }
+}
